@@ -1,0 +1,7 @@
+name,location,description_markdown,latitude,longitude,city_id,category_id,image_url,image_urls
+"Temple Name","Location Address","This is a description with **markdown**, including commas, and other punctuation!
+
+* Point 1
+* Point 2
+
+> Important quote here",12.3456,78.9012,1,1,https://main-image.jpg,"https://image1.jpg;https://image2.jpg" 
