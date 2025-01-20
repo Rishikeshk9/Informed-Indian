@@ -7,11 +7,21 @@ import {
   ChevronLeft,
   ChevronRight,
   Calendar,
+  Bell,
 } from 'lucide-react';
 import { useState } from 'react';
 
 export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const menuItems = [
+    { name: 'Dashboard', href: '/', icon: <Home size={20} /> },
+    { name: 'Notifications', href: '/notifications', icon: <Bell size={20} /> },
+    { name: 'Places', href: '/places', icon: <MapPin size={20} /> },
+    { name: 'Cities', href: '/cities', icon: <Building2 size={20} /> },
+    { name: 'Categories', href: '/categories', icon: <MapPin size={20} /> },
+    { name: 'Events', href: '/events', icon: <Calendar size={20} /> },
+  ];
 
   return (
     <div
@@ -43,36 +53,15 @@ export function Sidebar() {
         </button>
       </div>
       <nav className='flex-1 px-4 space-y-1'>
-        <NavItem
-          href='/'
-          icon={<Home size={20} />}
-          text='Dashboard'
-          isCollapsed={isCollapsed}
-        />
-        <NavItem
-          href='/places'
-          icon={<MapPin size={20} />}
-          text='Places'
-          isCollapsed={isCollapsed}
-        />
-        <NavItem
-          href='/cities'
-          icon={<Building2 size={20} />}
-          text='Cities'
-          isCollapsed={isCollapsed}
-        />
-        <NavItem
-          href='/categories'
-          icon={<MapPin size={20} />}
-          text='Categories'
-          isCollapsed={isCollapsed}
-        />
-        <NavItem
-          href='/events'
-          icon={<Calendar size={20} />}
-          text='Events'
-          isCollapsed={isCollapsed}
-        />
+        {menuItems.map((item) => (
+          <NavItem
+            key={item.name}
+            href={item.href}
+            icon={item.icon}
+            text={item.name}
+            isCollapsed={isCollapsed}
+          />
+        ))}
       </nav>
     </div>
   );
