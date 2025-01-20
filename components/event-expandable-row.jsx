@@ -157,15 +157,19 @@ export function EventExpandableRow({ event: initialEvent, onDeleteClick }) {
       const uploadPromises = files.map(async (file) => {
         const fileExt = file.name.split('.').pop();
         const fileName = `${uuidv4()}.${fileExt}`;
-        const filePath = `events/${event.id}/gallery/${fileName}`;
+        const filePath = `events/${event.id}/${fileName}`;
 
-        const { error: uploadError } = await supabaseAdmin.storage
-          .from('temples')
-          .upload(filePath, file);
+        const { data: uploadData, error: uploadError } =
+          await supabaseAdmin.storage.from('temples').upload(filePath, file);
 
         if (uploadError) throw uploadError;
 
-        return filePath;
+        const { data: publicUrlData } = supabaseAdmin.storage
+          .from('temples')
+          .getPublicUrl(`events/${event.id}/${fileName}`);
+
+        const newImageUrl = publicUrlData.publicUrl;
+        return newImageUrl;
       });
 
       const newPaths = await Promise.all(uploadPromises);
@@ -299,7 +303,7 @@ export function EventExpandableRow({ event: initialEvent, onDeleteClick }) {
             {event.image_url ? (
               <div className='relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0'>
                 <Image
-                  src={getImageUrl('events', event.image_url)}
+                  src={event.image_url}
                   alt={event.name}
                   fill
                   className='object-cover'
@@ -456,7 +460,7 @@ export function EventExpandableRow({ event: initialEvent, onDeleteClick }) {
                 {event.image_url && (
                   <div className='relative aspect-square rounded-lg overflow-hidden'>
                     <ImageWithFallback
-                      src={getImageUrl('events', event.image_url)}
+                      src={event.image_url}
                       alt={event.name}
                       fill
                       className='object-cover'
@@ -483,7 +487,7 @@ export function EventExpandableRow({ event: initialEvent, onDeleteClick }) {
                       className='relative aspect-square rounded-lg overflow-hidden group'
                     >
                       <ImageWithFallback
-                        src={getImageUrl('events', imagePath)}
+                        src={imagePath}
                         alt={`${event.name} gallery ${index + 1}`}
                         fill
                         className='object-cover'
