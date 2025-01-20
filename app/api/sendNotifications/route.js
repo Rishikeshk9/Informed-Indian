@@ -4,7 +4,7 @@ export async function POST(request) {
   try {
     const body = await request.json();
     const { tokens, notification } = body;
-
+    // TODO: Add country and city to the notification payload
     if (!tokens || !notification) {
       return new Response(
         JSON.stringify({ error: 'Missing tokens or notification payload' }),
