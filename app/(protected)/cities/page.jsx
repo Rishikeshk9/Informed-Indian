@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { supabase } from '../../supabaseClient';
-import { supabaseAdmin } from '../../supabaseAdmin';
+import { supabase } from '../../../supabaseClient';
+import { supabaseAdmin } from '../../../supabaseAdmin';
 import {
   Plus,
   ChevronUp,
@@ -12,11 +12,11 @@ import {
   Save,
   X,
 } from 'lucide-react';
-import { formatDate } from '../../utils/format-date';
-import { BulkUploadCities } from '../../components/bulk-upload-cities';
-import { AddCityDialog } from '../../components/add-city-dialog';
-import { DeleteCityDialog } from '../../components/delete-city-dialog';
-import { CitiesFilter } from '../../components/cities-filter';
+import { formatDate } from '../../../utils/format-date';
+import { BulkUploadCities } from '../../../components/bulk-upload-cities';
+import { AddCityDialog } from '../../../components/add-city-dialog';
+import { DeleteCityDialog } from '../../../components/delete-city-dialog';
+import { CitiesFilter } from '../../../components/cities-filter';
 
 const COUNTRIES = [
   { id: 'IN', name: 'India' },

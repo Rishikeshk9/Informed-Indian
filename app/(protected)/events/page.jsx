@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { supabase } from '../../supabaseClient';
-import { supabaseAdmin } from '../../supabaseAdmin';
+import { supabase } from '../../../supabaseClient';
+import { supabaseAdmin } from '../../../supabaseAdmin';
 import {
   Plus,
   ChevronUp,
@@ -13,14 +13,14 @@ import {
   X,
   ImagePlus,
 } from 'lucide-react';
-import { formatDate } from '../../utils/format-date';
-import { AddEventDialog } from '../../components/add-event-dialog';
-import { DeleteEventDialog } from '../../components/delete-event-dialog';
-import { BulkUploadEvents } from '../../components/bulk-upload-events';
+import { formatDate } from '../../../utils/format-date';
+import { AddEventDialog } from '../../../components/add-event-dialog';
+import { DeleteEventDialog } from '../../../components/delete-event-dialog';
+import { BulkUploadEvents } from '../../../components/bulk-upload-events';
 import MDEditor from '@uiw/react-md-editor';
-import { getImageUrl } from '../../utils/get-image-url';
+import { getImageUrl } from '../../../utils/get-image-url';
 import { v4 as uuidv4 } from 'uuid';
-import { EventExpandableRow } from '../../components/event-expandable-row';
+import { EventExpandableRow } from '../../../components/event-expandable-row';
 
 export default function Events() {
   const [events, setEvents] = useState([]);

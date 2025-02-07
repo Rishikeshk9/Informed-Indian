@@ -1,6 +1,6 @@
 'use client';
 
-import { supabase } from '../../supabaseClient';
+import { supabase } from '../../../supabaseClient';
 import Link from 'next/link';
 import {
   Plus,
@@ -12,11 +12,11 @@ import {
   Calendar,
   ChevronUp,
 } from 'lucide-react';
-import { ExpandableRow } from '../../components/expandable-row';
-import { BulkUploadPlaces } from '../../components/bulk-upload-places';
+import { ExpandableRow } from '../../../components/expandable-row';
+import { BulkUploadPlaces } from '../../../components/bulk-upload-places';
 import { useState, useEffect } from 'react';
-import { AddPlaceDialog } from '../../components/add-place-dialog';
-import { DeletePlaceDialog } from '../../components/delete-place-dialog';
+import { AddPlaceDialog } from '../../../components/add-place-dialog';
+import { DeletePlaceDialog } from '../../../components/delete-place-dialog';
 import MDEditor from '@uiw/react-md-editor';
 
 export default function Places() {

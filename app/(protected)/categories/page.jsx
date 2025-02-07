@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { supabase } from '../../supabaseClient';
-import { supabaseAdmin } from '../../supabaseAdmin';
+import { supabase } from '../../../supabaseClient';
+import { supabaseAdmin } from '../../../supabaseAdmin';
 import {
   Plus,
   ChevronUp,
@@ -12,10 +12,10 @@ import {
   Save,
   X,
 } from 'lucide-react';
-import { formatDate } from '../../utils/format-date';
-import { AddCategoryDialog } from '../../components/add-category-dialog';
-import { DeleteCategoryDialog } from '../../components/delete-category-dialog';
-import { BulkUploadCategories } from '../../components/bulk-upload-categories';
+import { formatDate } from '../../../utils/format-date';
+import { AddCategoryDialog } from '../../../components/add-category-dialog';
+import { DeleteCategoryDialog } from '../../../components/delete-category-dialog';
+import { BulkUploadCategories } from '../../../components/bulk-upload-categories';
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
